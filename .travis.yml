@@ -1,1 +1,3 @@
-language: c++
+language: cpp
+compiler: gcc
+script: g++ -Wall -Wfatal-errors -o spirit *.cpp && ./spirit
