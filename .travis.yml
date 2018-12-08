@@ -13,4 +13,4 @@ script:
   - sudo mv -v termcolor/include/termcolor /usr/include 
   - cd ../.. 
   - g++ -Wall -Wfatal-errors -fpermissive -std=c++11 -o spirit spirit.cpp -lZipper-static -lcurl -lz
-  - ./spirit
+  - ./spirit upgrade
