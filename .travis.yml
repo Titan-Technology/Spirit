@@ -12,5 +12,5 @@ script:
   - git clone https://github.com/ikalnytskyi/termcolor.git 
   - sudo mv -v termcolor/include/termcolor /usr/include 
   - cd ../.. 
-  - g++ -Wall -Wfatal-errors -fpermissive -std=c++11 -o spirit spirit.cpp -lZipper-static -lcurl
+  - g++ -Wall -Wfatal-errors -fpermissive -std=c++11 -o spirit spirit.cpp -lZipper-static -lcurl -lzlib
   - ./spirit
