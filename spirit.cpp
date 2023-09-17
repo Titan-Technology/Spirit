@@ -105,6 +105,19 @@ void getrepos()
 		}
 }
 
+
+void help()
+{
+	cout << "Usage:" << endl;
+    cout << "spirit create <folder name>	Creates a .banshee install package from a folder(/usr)" << endl;
+	cout << "spirit install <file>.banshee	Installs a .banshee install package" << endl;
+	cout << "spirit clean	Clean all .banshee install package from download directory" << endl;
+	cout << "spirit update	Updates and shows differences in install packages" << endl;
+	cout << "spirit upgrade	Commits upgrades to disk from DB" << endl;
+	cout << "spirit remove <package name>	Removes given package" << endl;
+	cout << "spirit search <package name>	Searchs for given package" << endl;
+}
+
 void getdb()
 {
 	CURL *curl;
@@ -131,25 +144,11 @@ int main(int argc, char* argv[])
     string array = argv[1];
     if(argc < 2)
         {
-			cout << "Usage:" << endl;
-            cout << "spirit create <folder name>	Creates a .banshee install package from a folder(/usr)" << endl;
-			cout << "spirit install <file>.banshee	Installs a .banshee install package" << endl;
-			cout << "spirit clean					Clean all .banshee install package from download directory" << endl;
-			cout << "spirit update					Updates and shows differences in install packages" << endl;
-			cout << "spirit upgrade					Commits upgrades to disk from DB" << endl;
-			cout << "spirit remove <package name>	Removes given package" << endl;
-			cout << "spirit search <package name>	Searchs for given package" << endl;
+			help();
         }
     if(array == "-h")
         {
-			cout << "Usage:" << endl;
-            cout << "spirit create <folder name>	Creates a .banshee install package from a folder(/usr)" << endl;
-			cout << "spirit install <file>.banshee	Installs a .banshee install package" << endl;
-			cout << "spirit clean					Clean all .banshee install package from download directory" << endl;
-			cout << "spirit update					Updates and shows differences in install packages" << endl;
-			cout << "spirit upgrade					Commits upgrades to disk from DB" << endl;
-			cout << "spirit remove <package name>	Removes given package" << endl;
-			cout << "spirit search <package name>	Searchs for given package" << endl;
+			help();
         }
 	if(array.length() == 0)
         {
@@ -197,6 +196,10 @@ int main(int argc, char* argv[])
             string searcher = argv[2];
             cout << searcher << endl;
         }
+	else
+	{
+		help();
+	}
     system("ldconfig");
     cout << argc << " " << argv[1] << " " << "0" << " " << array <<  " " << "Ok" << endl;
 }
