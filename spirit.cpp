@@ -65,7 +65,11 @@ void getrepofile()
     FILE *fp;
     CURLcode res;
     char *url = "https://ufpr.dl.sourceforge.net/project/ghostos-repo/repos.vision";
-    char outfilename[FILENAME_MAX] = "/etc/spirit/repos.vision";
+    #if defined(WIN32) || defined(__CYGWIN32__)
+		char outfilename[FILENAME_MAX] = "./repos.vision";
+	#else
+		char outfilename[FILENAME_MAX] = "/etc/spirit/repos.vision";
+	#endif
 	curl = curl_easy_init();
 	if(curl)
 		{
@@ -81,7 +85,11 @@ void getrepofile()
 
 void getrepos()
 {
-	ifstream in("/etc/spirit/repos.vision");
+	#if defined(WIN32) || defined(__CYGWIN32__)
+		ifstream in("./repos.vision");
+	#else
+		ifstream in("/etc/spirit/repos.vision");
+	#endif
 	if(!in)
 		{
 			cout << "Repos.vision does not exist" << endl;
@@ -173,7 +181,11 @@ int main(int argc, char* argv[])
         }
 	if(array == "clean")
 		{
-			system("rm -v /etc/spirit/grave/*.banshee");
+			#if defined(WIN32) || defined(__CYGWIN32__)
+				system("del ./grave/*.banshee");
+			#else
+				system("rm -v /etc/spirit/grave/*.banshee");
+			#endif
 			cout << "Grave is Emptied" << endl;
 			system("exit");
 		}
